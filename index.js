@@ -63,6 +63,8 @@ const filterButtonEls = document.getElementsByClassName("filter-btn")
 
 const postsEl = document.getElementById("posts")
 
+const signInForm = document.getElementById("sign-in-form")
+
 /* == UI - Event Listeners == */
 
 signInWithGoogleButtonEl.addEventListener("click", authSignInWithGoogle)
@@ -527,3 +529,12 @@ function selectFilter(event) {
     
     fetchPostsFromPeriod(selectedFilterPeriod, user)
 }
+
+signInForm.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        authSignInWithEmail()
+    }
+});
